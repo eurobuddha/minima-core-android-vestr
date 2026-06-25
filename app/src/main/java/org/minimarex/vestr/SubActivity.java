@@ -18,6 +18,7 @@ public abstract class SubActivity extends AppCompatActivity {
     protected NodeApi node;
     protected LinearLayout form;
 
+    /** Wire up the shared chrome (insets, header, back, NodeApi) then hand off to the subclass via init(). */
     @Override
     protected void onCreate(Bundle b) {
         super.onCreate(b);
@@ -40,14 +41,20 @@ public abstract class SubActivity extends AppCompatActivity {
         init();
     }
 
+    /** Subclass builds its form here — runs after chrome/NodeApi are ready. */
     protected abstract void init();
 
+    /** Release the node binding so we don't leak the service connection. */
     @Override protected void onDestroy() { super.onDestroy(); if (node != null) node.onDestroy(); }
 
+    /** Set the header title. */
     protected void title(String t) { ((TextView) findViewById(R.id.subTitle)).setText(t); }
 
     // ---- form helpers ----
+    // These build the vestr-styled form rows in code (no XML) and append them to `form` in order;
+    // the caller keeps the returned view to read/update it later.
 
+    /** Bold caption row above an input. */
     protected TextView label(String text) {
         TextView t = new TextView(this);
         t.setText(text);
@@ -59,6 +66,7 @@ public abstract class SubActivity extends AppCompatActivity {
         return t;
     }
 
+    /** Carded text field; inputType is one of the T_* constants below. */
     protected EditText input(String hint, int inputType) {
         EditText e = new EditText(this);
         e.setHint(hint);
@@ -76,6 +84,7 @@ public abstract class SubActivity extends AppCompatActivity {
         return e;
     }
 
+    /** Carded tappable row that looks like an input but opens a picker (date/time); caller sets the click + updates its text. */
     protected TextView pickerButton(String initial) {
         TextView t = new TextView(this);
         t.setText(initial);
@@ -91,6 +100,7 @@ public abstract class SubActivity extends AppCompatActivity {
         return t;
     }
 
+    /** Full-width yellow CTA with top margin; caller attaches the action. */
     protected TextView primaryButton(String text) {
         TextView b = new TextView(this);
         b.setText(text);
@@ -111,6 +121,7 @@ public abstract class SubActivity extends AppCompatActivity {
         return b;
     }
 
+    /** Hidden status line at the foot of the form; revealed by setStatus(). */
     protected TextView status() {
         TextView t = new TextView(this);
         t.setTextSize(13f);
@@ -121,12 +132,14 @@ public abstract class SubActivity extends AppCompatActivity {
         return t;
     }
 
+    /** Show msg on the status line, green for ok / red for error. */
     protected void setStatus(TextView t, String msg, boolean ok) {
         t.setVisibility(View.VISIBLE);
         t.setText(msg);
         t.setTextColor(ok ? VestrDesign.GREEN : VestrDesign.RED);
     }
 
+    /** dp → px for the current screen density. */
     protected int dp(int v) { return (int) (v * getResources().getDisplayMetrics().density); }
 
     protected static final int T_TEXT = InputType.TYPE_CLASS_TEXT;

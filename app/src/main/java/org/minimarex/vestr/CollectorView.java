@@ -12,14 +12,17 @@ public class CollectorView extends BaseView {
 
     private final LinearLayout container;
 
+    /** Inflate the shared page layout, grab its scroll container, and draw the initial contract list. */
     public CollectorView(MainActivity a) {
         super(a, R.layout.view_page);
         container = find(R.id.pageContainer);
         refresh();
     }
 
+    /** When the tab becomes visible, pull fresh node data then redraw — vested amounts move with the chain tip. */
     @Override public void onShown() { act.requestReload(); refresh(); }
 
+    /** Rebuild the whole tab: heading + blurb, then the user's contracts (or an empty-state hint) to tap and collect. */
     @Override
     public void refresh() {
         container.removeAllViews();
@@ -49,6 +52,7 @@ public class CollectorView extends BaseView {
             empty.setPadding(0, dp(24), 0, 0);
             container.addView(empty);
         } else {
+            // Same shared card as the Creator tab; tapping a card opens the detail/collect screen.
             for (Contract c : contracts) container.addView(ContractUi.card(act, c));
         }
     }

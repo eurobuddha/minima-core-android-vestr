@@ -11,14 +11,17 @@ public class AboutView extends BaseView {
 
     private final LinearLayout container;
 
+    /** Inflate the shared page layout, grab its scroll container, and build the static About content once. */
     public AboutView(MainActivity a) {
         super(a, R.layout.view_page);
         container = find(R.id.pageContainer);
         build();
     }
 
+    /** No-op — the About tab is static, so a data reload has nothing to redraw. */
     @Override public void refresh() {}
 
+    /** Compose the About screen programmatically: title, blurb, two CTAs, footer (no XML — keeps styling in VestrDesign). */
     private void build() {
         container.removeAllViews();
 
@@ -38,6 +41,7 @@ public class AboutView extends BaseView {
         blurb.setPadding(0, dp(10), 0, dp(28));
         container.addView(blurb);
 
+        // Two entry points into the main flows — primary (yellow) routes to Creator, secondary (black) to Collector.
         container.addView(cta("Create a contract", true, v -> act.goToTab(MainActivity.TAB_CREATOR)));
         container.addView(cta("Collect from a contract", false, v -> act.goToTab(MainActivity.TAB_COLLECTOR)));
 
@@ -50,6 +54,7 @@ public class AboutView extends BaseView {
         container.addView(foot);
     }
 
+    /** Build a full-width call-to-action button; {@code primary} picks the yellow accent vs the black secondary style. */
     private Button cta(String text, boolean primary, android.view.View.OnClickListener onClick) {
         Button b = new Button(act);
         b.setText(text);

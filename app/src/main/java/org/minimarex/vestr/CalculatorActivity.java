@@ -26,6 +26,7 @@ public class CalculatorActivity extends SubActivity {
     private Spinner graceSpinner;
     private TextView startBtn, endBtn, result;
 
+    /** Build the preview form and fetch the chain tip (needed to convert dates to block heights). */
     @Override
     protected void init() {
         title("Calculate a contract");
@@ -63,7 +64,9 @@ public class CalculatorActivity extends SubActivity {
         });
     }
 
+    /** Validate inputs, then show the amount released each grace period (preview only — no transaction). */
     private void calculate() {
+        // Same guard ordering as Create: parse amount, then dates picked, then ordering, then tip last.
         BigDecimal amount;
         try { amount = new BigDecimal(amountInput.getText().toString().trim()); }
         catch (Exception e) { setStatus(result, "Enter a valid amount.", false); return; }
@@ -78,11 +81,15 @@ public class CalculatorActivity extends SubActivity {
         setStatus(result, "Released per " + grace.label + ": " + ContractUi.amount(perGrace), true);
     }
 
+    /** Callback delivering the chosen instant in epoch millis. */
     private interface MsCb { void on(long ms); }
 
+    /** Show a date picker, then chain a time picker from its result; only the combined instant fires cb. */
     private void pick(long initial, final MsCb cb) {
         final Calendar c = Calendar.getInstance();
         if (initial > 0) c.setTimeInMillis(initial);
+        // DatePicker first, then TimePicker chained off its result; cb gets the full timestamp, and
+        // never fires if the user cancels either dialog.
         new DatePickerDialog(this, (dp, y, mo, d) -> {
             c.set(Calendar.YEAR, y); c.set(Calendar.MONTH, mo); c.set(Calendar.DAY_OF_MONTH, d);
             new TimePickerDialog(this, (tp, h, mi) -> {

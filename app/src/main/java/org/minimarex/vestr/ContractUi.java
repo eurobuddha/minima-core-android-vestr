@@ -15,8 +15,9 @@ import java.util.concurrent.TimeUnit;
 /** Shared rendering for a vesting-contract list card (Creator + Collector tabs), faithful to the dapp. */
 public final class ContractUi {
 
-    private ContractUi() {}
+    private ContractUi() {} // utility holder — never instantiated
 
+    /** Build one tappable contract card (header icon/amount + two-column body) that opens the detail screen on click. */
     public static View card(final MainActivity act, final Contract c) {
         int pad = dp(act, 14);
         LinearLayout card = new LinearLayout(act);
@@ -37,6 +38,7 @@ public final class ContractUi {
         head.setBackgroundColor(VestrDesign.CARD_2);
         head.setPadding(pad, pad, pad, pad);
 
+        // Avatar glyph: "M" for native Minima, else first letter of the token name (or "?" when unnamed).
         TextView icon = new TextView(act);
         icon.setText(c.isMinima() ? "M" : (c.tokenName.isEmpty() ? "?" : c.tokenName.substring(0, 1).toUpperCase()));
         icon.setTextColor(VestrDesign.ON_YELLOW);
@@ -55,6 +57,7 @@ public final class ContractUi {
         LinearLayout titleCol = new LinearLayout(act);
         titleCol.setOrientation(LinearLayout.VERTICAL);
         titleCol.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+        // No user nickname in the model — label by the truncated coin UID instead.
         TextView nick = new TextView(act);
         nick.setText("Contract " + shortHex(c.uid));
         nick.setTextColor(VestrDesign.DIM);
@@ -86,12 +89,14 @@ public final class ContractUi {
         right.setOrientation(LinearLayout.VERTICAL);
         right.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
         right.setGravity(Gravity.END);
+        // Right column: collect cadence (grace period) plus human-readable start/end timing.
         right.addView(rightLine(act, "Collect " + grace(c.graceHours), VestrDesign.DIM));
         right.addView(rightLine(act, relative(c.startMs, "start"), VestrDesign.DIM_2));
         right.addView(rightLine(act, relative(c.endMs, "end"), VestrDesign.DIM_2));
         body.addView(right);
         card.addView(body);
 
+        // Tapping the card hands the raw coin JSON to the detail/collect activity.
         card.setOnClickListener(v -> {
             Intent i = new Intent(act, ContractDetailActivity.class);
             i.putExtra("coin", c.raw.toString());
@@ -102,6 +107,7 @@ public final class ContractUi {
 
     // ---- helpers ----
 
+    /** "key: value" label line for the body's left column; {@code bold} emphasises headline figures. */
     private static View kv(MainActivity act, String k, String v, boolean bold) {
         TextView t = new TextView(act);
         t.setText(k + ": " + v);
@@ -112,6 +118,7 @@ public final class ContractUi {
         return t;
     }
 
+    /** End-aligned single text line for the body's right (timing) column, in the given dim colour. */
     private static View rightLine(MainActivity act, String s, int color) {
         TextView t = new TextView(act);
         t.setText(s);
@@ -122,10 +129,12 @@ public final class ContractUi {
         return t;
     }
 
+    /** Map a grace-period in hours to its human label (e.g. "daily", "weekly") via the contract's Grace enum. */
     static String grace(int hours) {
         return VestingContract.Grace.fromHours(hours).label;
     }
 
+    /** Format a token amount: cap at 6 decimals (round down — never overstate), drop trailing zeros. */
     static String amount(BigDecimal b) {
         try {
             BigDecimal t = b;
@@ -134,6 +143,7 @@ public final class ContractUi {
         } catch (Exception e) { return b.toPlainString(); }
     }
 
+    /** Abbreviate a long hex id to "0x"-stripped "abcdef…wxyz"; short strings pass through unchanged. */
     static String shortHex(String s) {
         if (s == null) return "";
         s = s.startsWith("0x") ? s.substring(2) : s;
@@ -156,6 +166,7 @@ public final class ContractUi {
         return v + (past ? span + " ago" : "in " + span);
     }
 
+    /** Convert density-independent pixels to raw pixels using the device's display density. */
     private static int dp(MainActivity act, int v) {
         return (int) (v * act.getResources().getDisplayMetrics().density);
     }

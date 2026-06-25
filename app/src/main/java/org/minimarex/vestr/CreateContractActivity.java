@@ -37,6 +37,7 @@ public class CreateContractActivity extends SubActivity {
     private TextView startBtn, endBtn, createBtn, status;
     private long startMs = 0, endMs = 0;
 
+    /** Build the form, then kick off the three async fetches (tip, token list, default address). */
     @Override
     protected void init() {
         title("Create a contract");
@@ -48,6 +49,7 @@ public class CreateContractActivity extends SubActivity {
         fetchDefaultAddress();
     }
 
+    /** Lay out every field; spinners start seeded with Minima and get replaced once fetches land. */
     private void buildForm() {
         label("Token");
         tokenSpinner = new Spinner(this);
@@ -90,6 +92,7 @@ public class CreateContractActivity extends SubActivity {
         status = status();
     }
 
+    /** Spinner adapter backed by the live tokenNames list (rebuilt when the balance fetch returns). */
     private ArrayAdapter<String> tokenAdapter() {
         ArrayAdapter<String> a = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tokenNames);
         a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -98,6 +101,7 @@ public class CreateContractActivity extends SubActivity {
 
     // ---- node fetches ----
 
+    /** Cache the current chain tip — needed to convert start/end dates to block heights at submit time. */
     private void fetchBlock() {
         node.cmd("block", new NodeApi.Cb() {
             @Override public void onResult(JSONObject j) {
@@ -108,6 +112,7 @@ public class CreateContractActivity extends SubActivity {
         });
     }
 
+    /** Replace the seed token list with the wallet's real balances (id + name + sendable). */
     private void fetchTokens() {
         node.cmd("balance", new NodeApi.Cb() {
             @Override public void onResult(JSONObject j) {
@@ -128,6 +133,7 @@ public class CreateContractActivity extends SubActivity {
         });
     }
 
+    /** Pre-fill the withdrawal field with one of the node's own addresses (only if still blank). */
     private void fetchDefaultAddress() {
         node.cmd("getaddress", new NodeApi.Cb() {
             @Override public void onResult(JSONObject j) {
@@ -141,6 +147,7 @@ public class CreateContractActivity extends SubActivity {
 
     // ---- submit ----
 
+    /** Validate the form, then resolve the address before building+sending the contract. */
     private void submit() {
         final String tokenid = tokenIds.get(Math.max(0, tokenSpinner.getSelectedItemPosition()));
         final String addr = addressInput.getText().toString().trim();
@@ -149,6 +156,9 @@ public class CreateContractActivity extends SubActivity {
         final String burn = burnInput.getText().toString().trim();
         final String pw = passwordInput.getText().toString().trim();
 
+        // Validation order matters: each guard assumes the earlier ones passed (amount parsed before
+        // sign check; both dates picked before the future/ordering checks; tip last so a still-syncing
+        // node fails with the friendliest message rather than a confusing earlier one).
         if (addr.isEmpty() || !Util.isValidAddress(addr)) { setStatus(status, "Enter a valid withdrawal address.", false); return; }
         final BigDecimal amount;
         try { amount = new BigDecimal(amountStr); } catch (Exception e) { setStatus(status, "Enter a valid amount.", false); return; }
@@ -159,7 +169,9 @@ public class CreateContractActivity extends SubActivity {
         if (endMs <= startMs) { setStatus(status, "End must be after the start.", false); return; }
         if (tip == 0) { setStatus(status, "Still syncing the chain tip — try again in a moment.", false); return; }
 
-        // Resolve to the 0x hex form — the contract compares GETOUTADDR (always 0x) against state[0].
+        // Resolve to the 0x hex form — the contract compares GETOUTADDR (always 0x) against state[0],
+        // so a user-entered Mx... address must be normalised here or the on-chain check would never match.
+        // checkaddress runs async, so the actual send is deferred to doSend() in the callback below.
         createBtn.setEnabled(false);
         setStatus(status, "Validating address…", true);
         node.cmd("checkaddress address:" + addr, new NodeApi.Cb() {
@@ -177,7 +189,10 @@ public class CreateContractActivity extends SubActivity {
         });
     }
 
+    /** Build the contract state map and `send` the amount to the script address with that state attached. */
     private void doSend(String unlockHex, BigDecimal amount, String tokenid, VestingContract.Grace grace, String burn, String pw) {
+        // State ports the script reads: 0 unlock addr, 1 amount, 2/3 start/end block, 4 grace blocks,
+        // 5 created-at ms, 6/8 start/end ms (display), 7 grace hours, 199 unique id (distinguishes coins).
         long startBlock = VestingContract.blockHeightForDate(tip, startMs);
         long endBlock = VestingContract.blockHeightForDate(tip, endMs);
         long graceBlocks = grace.blocks();
@@ -227,11 +242,15 @@ public class CreateContractActivity extends SubActivity {
 
     // ---- date-time picker ----
 
+    /** Callback delivering the chosen instant in epoch millis. */
     private interface MsCb { void on(long ms); }
 
+    /** Show a date picker, then chain a time picker from its result; only the combined instant fires cb. */
     private void pickDateTime(long initial, final MsCb cb) {
         final Calendar c = Calendar.getInstance();
         if (initial > 0) c.setTimeInMillis(initial);
+        // DatePicker first; its onDateSet writes Y/M/D into c, then opens the TimePicker which writes
+        // H/M and finally hands the full timestamp to cb. cb never fires if the user cancels either dialog.
         new DatePickerDialog(this, (dp, y, mo, d) -> {
             c.set(Calendar.YEAR, y); c.set(Calendar.MONTH, mo); c.set(Calendar.DAY_OF_MONTH, d);
             new TimePickerDialog(this, (tp, h, mi) -> {
@@ -241,8 +260,10 @@ public class CreateContractActivity extends SubActivity {
         }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    /** True if s parses as a strictly-positive number. */
     private boolean isPositive(String s) { try { return new BigDecimal(s).signum() > 0; } catch (Exception e) { return false; } }
 
+    /** Random uppercase-hex string of the given length (used for the contract's unique state[199] id). */
     private String randomHex(int chars) {
         Random r = new Random();
         StringBuilder s = new StringBuilder();

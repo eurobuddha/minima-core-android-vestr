@@ -29,6 +29,7 @@ public class ContractDetailActivity extends SubActivity {
     private EditText burnInput;
     private TextView collectBtn, status, availableTv;
 
+    /** Parse the contract coin passed in via intent, render it, then fetch the tip to run the maths. */
     @Override
     protected void init() {
         title("Contract");
@@ -38,6 +39,7 @@ public class ContractDetailActivity extends SubActivity {
         fetchBlock();
     }
 
+    /** Fetch the chain tip, then run the collect maths against it. */
     private void fetchBlock() {
         node.cmd("block", new NodeApi.Cb() {
             @Override public void onResult(JSONObject j) {
@@ -53,6 +55,10 @@ public class ContractDetailActivity extends SubActivity {
      *  matches the on-chain script — client-side decimal rounding does NOT). */
     private void runMaths() {
         if (tip <= 0) { render(); return; }
+        // Run the real on-chain CHECK_MATHS in the node's VM (runscript) with the same prevstate +
+        // @AMOUNT/@BLOCK/@COINAGE globals the spend would see, and read cancollect/change straight back
+        // out of its variables. Doing the division client-side in BigDecimal would round differently from
+        // the script's SIGDIG(2) and the resulting txnoutput amount would fail the contract's check.
         String prevstate = "{\"1\":\"" + Contract.state(c.raw, 1) + "\",\"2\":\"" + Contract.state(c.raw, 2)
                 + "\",\"3\":\"" + Contract.state(c.raw, 3) + "\",\"4\":\"" + Contract.state(c.raw, 4)
                 + "\",\"5\":\"" + Contract.state(c.raw, 5) + "\"}";
@@ -74,8 +80,10 @@ public class ContractDetailActivity extends SubActivity {
         });
     }
 
+    /** Parse to BigDecimal, defaulting to zero on garbage. */
     private static BigDecimal bd(String s) { try { return new BigDecimal(s); } catch (Exception e) { return BigDecimal.ZERO; } }
 
+    /** Rebuild the whole detail screen from current state; called again whenever tip/maths change. */
     private void render() {
         form.removeAllViews();
         BigDecimal canCollect = cancollect;
@@ -138,6 +146,7 @@ public class ContractDetailActivity extends SubActivity {
         status = status();
     }
 
+    /** Append a key/value stat row (label left, bold value right). */
     private void addStat(String k, String v) {
         LinearLayout row = new LinearLayout(this);
         row.setOrientation(LinearLayout.HORIZONTAL);
@@ -157,6 +166,7 @@ public class ContractDetailActivity extends SubActivity {
         form.addView(row);
     }
 
+    /** Append a monospace id row that copies its value to the clipboard on tap. */
     private void addCopy(String k, final String v) {
         LinearLayout row = new LinearLayout(this);
         row.setOrientation(LinearLayout.VERTICAL);
@@ -182,22 +192,30 @@ public class ContractDetailActivity extends SubActivity {
 
     // ---- collect ----
 
+    /** Assemble the collect transaction command-by-command and run it as a strict sequence. */
     private void collect(BigDecimal canCollect) {
         if (canCollect.signum() <= 0) return;
         String burn = burnInput.getText().toString().trim();
-        BigDecimal change = this.change;   // exact runscript value (@AMOUNT - cancollect)
+        BigDecimal change = this.change;   // exact runscript value (@AMOUNT - cancollect), NOT recomputed here
         String id = "vc" + System.currentTimeMillis();
         String tid = c.tokenid;
 
+        // Build the txn in pieces because txncreate/input/output/state are separate node commands that
+        // mutate one named pending txn; they must run in order against the same id, hence runSequence.
         List<String> cmds = new ArrayList<>();
         cmds.add("txncreate id:" + id);
+        // scriptmmr:true gives the input the MMR proof so the contract script can run when posted.
         cmds.add("txninput id:" + id + " coinid:" + c.coinid + " scriptmmr:true");
+        // Pay the vested amount to the withdrawal address; storestate:false — recipient keeps no state.
         cmds.add("txnoutput id:" + id + " address:" + c.unlockAddr + " amount:" + canCollect.toPlainString()
                 + " tokenid:" + tid + " storestate:false");
         if (change.signum() > 0) {
+            // Return the remainder to the same contract script with storestate:true so the carried-forward
+            // state below keeps the contract collectable again next grace period.
             cmds.add("txnoutput id:" + id + " address:" + c.address + " amount:" + change.toPlainString()
                     + " tokenid:" + tid + " storestate:true");
         }
+        // Carry every state port forward unchanged onto the change output (the contract re-reads them).
         for (int port : new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 199}) {
             cmds.add("txnstate id:" + id + " port:" + port + " value:" + Contract.state(c.raw, port));
         }
@@ -212,6 +230,8 @@ public class ContractDetailActivity extends SubActivity {
 
     /** Run the build/post commands in order; clean up the txn on completion or error. */
     private void runSequence(final List<String> cmds, final int i, final String id) {
+        // node.cmd is async, so we recurse from each callback rather than loop — this guarantees each
+        // command finishes (and didn't fail) before the next mutates the same txn. Index past the end = done.
         if (i >= cmds.size()) {
             node.cmd("txndelete id:" + id, null);
             setStatus(status, "✓ Collected — tokens will arrive shortly.", true);
@@ -230,11 +250,13 @@ public class ContractDetailActivity extends SubActivity {
         });
     }
 
+    /** Abort: drop the half-built txn, re-enable the button, and surface the error. */
     private void fail(String msg, String id) {
         node.cmd("txndelete id:" + id, null);
         collectBtn.setEnabled(true);
         setStatus(status, "Failed: " + msg, false);
     }
 
+    /** True if s parses as a strictly-positive number. */
     private boolean isPositive(String s) { try { return new BigDecimal(s).signum() > 0; } catch (Exception e) { return false; } }
 }

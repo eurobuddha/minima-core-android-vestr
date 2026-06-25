@@ -15,18 +15,22 @@ public class CreatorView extends BaseView {
 
     private final LinearLayout container;
 
+    /** Inflate the shared page layout, grab its scroll container, and draw the initial contract list. */
     public CreatorView(MainActivity a) {
         super(a, R.layout.view_page);
         container = find(R.id.pageContainer);
         refresh();
     }
 
+    /** When the tab becomes visible, pull fresh node data then redraw — keeps the contract list current on return. */
     @Override public void onShown() { act.requestReload(); refresh(); }
 
+    /** Rebuild the whole tab: Create + Calculate actions, then the user's contracts (or an empty-state hint). */
     @Override
     public void refresh() {
         container.removeAllViews();
 
+        // Create flow hands the vesting script address to the activity so it can lock funds to that contract.
         container.addView(button("＋  Create a contract", true, v -> {
             Intent i = new Intent(act, CreateContractActivity.class);
             i.putExtra("script", act.scriptAddress());
@@ -53,10 +57,12 @@ public class CreatorView extends BaseView {
             empty.setPadding(0, dp(24), 0, 0);
             container.addView(empty);
         } else {
+            // Reuse the shared card renderer so Creator and Collector show identical contract rows.
             for (Contract c : contracts) container.addView(ContractUi.card(act, c));
         }
     }
 
+    /** Build a rounded full-width action button (TextView, not Button, for the flat look); {@code primary} = yellow accent. */
     private View button(String text, boolean primary, View.OnClickListener onClick) {
         TextView b = new TextView(act);
         b.setText(text);
