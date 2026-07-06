@@ -1,4 +1,4 @@
-package org.minimarex.vestr;
+package com.eurobuddha.vestr;
 
 import android.view.View;
 import android.view.ViewGroup;

@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'org.minimarex.vestr'
+    namespace 'com.eurobuddha.vestr'
     compileSdk 36
 
     defaultConfig {
-        applicationId "org.minimarex.vestr"
+        applicationId "com.eurobuddha.vestr"
         minSdk 28
         targetSdk 35
         versionCode 301

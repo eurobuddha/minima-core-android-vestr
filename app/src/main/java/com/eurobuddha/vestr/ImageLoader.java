@@ -1,4 +1,4 @@
-package org.minimarex.vestr;
+package com.eurobuddha.vestr;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

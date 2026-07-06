@@ -1,4 +1,4 @@
-package org.minimarex.vestr;
+package com.eurobuddha.vestr;
 
 /**
  * vestr design tokens — the shared dark + orange look used across the native Minima dapps (matches the

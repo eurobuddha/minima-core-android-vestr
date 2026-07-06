@@ -1,4 +1,4 @@
-package org.minimarex.vestr;
+package com.eurobuddha.vestr;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

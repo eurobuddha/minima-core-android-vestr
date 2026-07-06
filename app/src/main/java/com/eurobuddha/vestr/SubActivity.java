@@ -1,4 +1,4 @@
-package org.minimarex.vestr;
+package com.eurobuddha.vestr;
 
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
