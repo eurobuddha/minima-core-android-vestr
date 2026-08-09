@@ -1,0 +1,447 @@
+{
+  "communities": {
+    "0": [
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_calculatoractivity",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_calculatoractivity_init",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_calculatoractivity_pick",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_java_edittext",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_java_override",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_java_simpledateformat",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_java_spinner",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_java_textview",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_mscb",
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_mscb_on",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_buildform",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_tokenadapter",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_nodeapi_ondestroy",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_java_bundle",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_java_edittext",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_java_linearlayout",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_java_override",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_java_textview",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_dp",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_init",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_input",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_label",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_oncreate",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_ondestroy",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_pickerbutton",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_primarybutton",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_status",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_title",
+      "appcompatactivity",
+      "arrayadapter"
+    ],
+    "1": [
+      "app_src_main_java_com_eurobuddha_vestr_coin",
+      "app_src_main_java_com_eurobuddha_vestr_coin_coin",
+      "app_src_main_java_com_eurobuddha_vestr_coin_coin_from",
+      "app_src_main_java_com_eurobuddha_vestr_coin_java_jsonobject",
+      "app_src_main_java_com_eurobuddha_vestr_contract",
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract",
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract_bd",
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract_from",
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract_graceblocksremaining",
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract_isminima",
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract_parsel",
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract_state",
+      "app_src_main_java_com_eurobuddha_vestr_contract_java_jsonobject",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_submit",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_contracts",
+      "app_src_main_java_com_eurobuddha_vestr_util",
+      "app_src_main_java_com_eurobuddha_vestr_util_java_jsonobject",
+      "app_src_main_java_com_eurobuddha_vestr_util_util",
+      "app_src_main_java_com_eurobuddha_vestr_util_util_decimalplaces",
+      "app_src_main_java_com_eurobuddha_vestr_util_util_extracttxpowid",
+      "app_src_main_java_com_eurobuddha_vestr_util_util_isminima",
+      "app_src_main_java_com_eurobuddha_vestr_util_util_isvalidaddress",
+      "app_src_main_java_com_eurobuddha_vestr_util_util_shorten",
+      "app_src_main_java_com_eurobuddha_vestr_util_util_tidyamount",
+      "app_src_main_java_com_eurobuddha_vestr_util_util_tokenname",
+      "app_src_main_java_com_eurobuddha_vestr_util_util_util"
+    ],
+    "2": [
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_node",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_done",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_done_onfailed",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_done_onposted",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_java_jsonobject",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_out",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_out_out",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_outcoin",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_outcoin_addressis",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_outcoin_outcoin",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_progress",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_progress_stage",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_addinput",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_addoutput",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_fail",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_onprogress",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_parseoutputs",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_parsetxpowid",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_run",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_sign",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_stage",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_txnbuilder",
+      "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder_txpowof"
+    ],
+    "3": [
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_java_bundle",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_java_handler",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_java_jsonobject",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_java_linearlayout",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_java_override",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_java_textview",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_buildbottombar",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_chainblock",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_currenttab",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_dp",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_gototab",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_handleerr",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_oncreate",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_ondestroy",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_onresume",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_openminimacore",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_requestreload",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_scriptaddress",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_setactivetab",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_setpaired",
+      "broadcastreceiver",
+      "viewpager"
+    ],
+    "4": [
+      "app_src_main_java_com_eurobuddha_vestr_baseview",
+      "app_src_main_java_com_eurobuddha_vestr_baseview_baseview",
+      "app_src_main_java_com_eurobuddha_vestr_baseview_baseview_baseview",
+      "app_src_main_java_com_eurobuddha_vestr_baseview_baseview_dp",
+      "app_src_main_java_com_eurobuddha_vestr_baseview_baseview_getroot",
+      "app_src_main_java_com_eurobuddha_vestr_baseview_baseview_onnewblock",
+      "app_src_main_java_com_eurobuddha_vestr_baseview_baseview_onshown",
+      "app_src_main_java_com_eurobuddha_vestr_baseview_baseview_refresh",
+      "app_src_main_java_com_eurobuddha_vestr_baseview_java_view",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_java_override",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_java_view",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager_destroyitem",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager_getcount",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager_getpagetitle",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager_instantiateitem",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager_isviewfromobject",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager_mainpager",
+      "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager_viewat",
+      "nonnull",
+      "pageradapter",
+      "viewgroup"
+    ],
+    "5": [
+      "app_src_main_java_com_eurobuddha_vestr_baseview_baseview_find",
+      "app_src_main_java_com_eurobuddha_vestr_collectorview",
+      "app_src_main_java_com_eurobuddha_vestr_collectorview_collectorview",
+      "app_src_main_java_com_eurobuddha_vestr_collectorview_collectorview_collectorview",
+      "app_src_main_java_com_eurobuddha_vestr_collectorview_collectorview_onshown",
+      "app_src_main_java_com_eurobuddha_vestr_collectorview_collectorview_refresh",
+      "app_src_main_java_com_eurobuddha_vestr_collectorview_java_linearlayout",
+      "app_src_main_java_com_eurobuddha_vestr_collectorview_java_override",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_creatorview",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_creatorview_button",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_creatorview_creatorview",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_creatorview_onshown",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_creatorview_refresh",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_java_linearlayout",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_java_onclicklistener",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_java_override",
+      "app_src_main_java_com_eurobuddha_vestr_creatorview_java_view",
+      "suppresswarnings"
+    ],
+    "6": [
+      "app_src_main_java_com_eurobuddha_vestr_calculatoractivity_calculatoractivity_calculate",
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract_cancollect",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_amount",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_blocks",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_fromhours",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_grace",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_grace_daily",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_grace_halfyearly",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_grace_monthly",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_grace_none",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_grace_quarterly",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_grace_weekly",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_grace_yearly",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_vestingcontract",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_vestingcontract_blockheightfordate",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_vestingcontract_cancollect",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_vestingcontract_paymentpergrace",
+      "app_src_main_java_com_eurobuddha_vestr_vestingcontract_vestingcontract_vestingcontract"
+    ],
+    "7": [
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_addcopy",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_addstat",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_bd",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_collect",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_fail",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_fetchblock",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_init",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_ispositive",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_render",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_runmaths",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity_runsequence",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_java_edittext",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_java_override",
+      "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_java_textview",
+      "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity_setstatus"
+    ],
+    "8": [
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_dosend",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_fetchblock",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_fetchdefaultaddress",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_fetchtokens",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_init",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_ispositive",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_pickdatetime",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity_randomhex",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_java_edittext",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_java_override",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_java_simpledateformat",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_java_spinner",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_java_textview",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_mscb",
+      "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_mscb_on"
+    ],
+    "9": [
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_deployscript",
+      "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity_reload",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_cb",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_cb_onerror",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_cb_onresult",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_java_handler",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_java_jsonobject",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_nodeapi",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_nodeapi_cmd",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_nodeapi_dead",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_nodeapi_nodeapi",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_nodeapi_timeoutfor",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_pairinglistener",
+      "app_src_main_java_com_eurobuddha_vestr_nodeapi_pairinglistener_onenabled",
+      "context",
+      "minimaapi"
+    ],
+    "10": [
+      "app_src_main_java_com_eurobuddha_vestr_contract_contract_collected",
+      "app_src_main_java_com_eurobuddha_vestr_contractui",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_card",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_contractui",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_dp",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_grace",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_kv",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_relative",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_rightline",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_contractui_shorthex",
+      "app_src_main_java_com_eurobuddha_vestr_contractui_java_view"
+    ],
+    "11": [
+      "app_src_main_java_com_eurobuddha_vestr_aboutview",
+      "app_src_main_java_com_eurobuddha_vestr_aboutview_aboutview",
+      "app_src_main_java_com_eurobuddha_vestr_aboutview_aboutview_aboutview",
+      "app_src_main_java_com_eurobuddha_vestr_aboutview_aboutview_build",
+      "app_src_main_java_com_eurobuddha_vestr_aboutview_aboutview_cta",
+      "app_src_main_java_com_eurobuddha_vestr_aboutview_aboutview_refresh",
+      "app_src_main_java_com_eurobuddha_vestr_aboutview_java_linearlayout",
+      "app_src_main_java_com_eurobuddha_vestr_aboutview_java_onclicklistener",
+      "app_src_main_java_com_eurobuddha_vestr_aboutview_java_override",
+      "button"
+    ],
+    "12": [
+      "app_src_main_java_com_eurobuddha_vestr_imageloader",
+      "app_src_main_java_com_eurobuddha_vestr_imageloader_imageloader",
+      "app_src_main_java_com_eurobuddha_vestr_imageloader_imageloader_decode",
+      "app_src_main_java_com_eurobuddha_vestr_imageloader_imageloader_decodedatauri",
+      "app_src_main_java_com_eurobuddha_vestr_imageloader_imageloader_imageloader",
+      "app_src_main_java_com_eurobuddha_vestr_imageloader_imageloader_load",
+      "bitmap",
+      "imageview",
+      "lrucache"
+    ],
+    "13": [
+      "app_src_main_java_com_eurobuddha_vestr_tokenbalance",
+      "app_src_main_java_com_eurobuddha_vestr_tokenbalance_java_jsonobject",
+      "app_src_main_java_com_eurobuddha_vestr_tokenbalance_tokenbalance",
+      "app_src_main_java_com_eurobuddha_vestr_tokenbalance_tokenbalance_from",
+      "app_src_main_java_com_eurobuddha_vestr_tokenmeta",
+      "app_src_main_java_com_eurobuddha_vestr_tokenmeta_tokenmeta",
+      "app_src_main_java_com_eurobuddha_vestr_tokenmeta_tokenmeta_decode",
+      "app_src_main_java_com_eurobuddha_vestr_tokenmeta_tokenmeta_first",
+      "app_src_main_java_com_eurobuddha_vestr_tokenmeta_tokenmeta_parse"
+    ],
+    "14": [
+      "gradlew",
+      "gradlew__entry",
+      "gradlew_die",
+      "gradlew_save",
+      "gradlew_warn"
+    ],
+    "15": [
+      "app_src_main_java_com_eurobuddha_vestr_vestrdesign",
+      "app_src_main_java_com_eurobuddha_vestr_vestrdesign_vestrdesign",
+      "app_src_main_java_com_eurobuddha_vestr_vestrdesign_vestrdesign_vestrdesign"
+    ],
+    "16": [
+      "app_build"
+    ],
+    "17": [
+      "build"
+    ],
+    "18": [
+      "settings"
+    ]
+  },
+  "cohesion": {
+    "0": 0.1268939393939394,
+    "1": 0.11692307692307692,
+    "2": 0.15666666666666668,
+    "3": 0.15217391304347827,
+    "4": 0.1383399209486166,
+    "5": 0.16374269005847952,
+    "6": 0.12280701754385964,
+    "7": 0.22794117647058823,
+    "8": 0.19117647058823528,
+    "9": 0.21323529411764705,
+    "10": 0.3333333333333333,
+    "11": 0.28888888888888886,
+    "12": 0.4166666666666667,
+    "13": 0.3333333333333333,
+    "14": 0.6,
+    "15": 0.6666666666666666,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0
+  },
+  "gods": [
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_mainactivity_mainactivity",
+      "label": "MainActivity",
+      "degree": 40
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_nodeapi_cb",
+      "label": "Cb",
+      "degree": 19
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_createcontractactivity_createcontractactivity",
+      "label": "CreateContractActivity",
+      "degree": 18
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_subactivity_subactivity",
+      "label": "SubActivity",
+      "degree": 18
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_txnbuilder_txnbuilder",
+      "label": "TxnBuilder",
+      "degree": 18
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_baseview_baseview",
+      "label": "BaseView",
+      "degree": 16
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_contractdetailactivity_contractdetailactivity",
+      "label": "ContractDetailActivity",
+      "degree": 16
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_nodeapi_nodeapi",
+      "label": "NodeApi",
+      "degree": 16
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_contract_contract",
+      "label": "Contract",
+      "degree": 13
+    },
+    {
+      "id": "app_src_main_java_com_eurobuddha_vestr_mainpager_mainpager",
+      "label": "MainPager",
+      "degree": 12
+    }
+  ],
+  "surprises": [
+    {
+      "source": "AboutView",
+      "target": "BaseView",
+      "source_files": [
+        "app/src/main/java/com/eurobuddha/vestr/AboutView.java",
+        "app/src/main/java/com/eurobuddha/vestr/BaseView.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "BaseView",
+      "target": "MainActivity",
+      "source_files": [
+        "app/src/main/java/com/eurobuddha/vestr/BaseView.java",
+        "app/src/main/java/com/eurobuddha/vestr/MainActivity.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "CollectorView",
+      "target": "BaseView",
+      "source_files": [
+        "app/src/main/java/com/eurobuddha/vestr/CollectorView.java",
+        "app/src/main/java/com/eurobuddha/vestr/BaseView.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "CreatorView",
+      "target": "BaseView",
+      "source_files": [
+        "app/src/main/java/com/eurobuddha/vestr/CreatorView.java",
+        "app/src/main/java/com/eurobuddha/vestr/BaseView.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "TxnBuilder",
+      "target": "Coin",
+      "source_files": [
+        "app/src/main/java/com/eurobuddha/vestr/TxnBuilder.java",
+        "app/src/main/java/com/eurobuddha/vestr/Coin.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
