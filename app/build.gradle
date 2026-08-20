@@ -10,8 +10,8 @@ android {
         applicationId "com.eurobuddha.vestr"
         minSdk 28
         targetSdk 35
-        versionCode 401
-        versionName "0.4.1"
+        versionCode 403
+        versionName "0.4.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
