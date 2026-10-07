@@ -47,7 +47,7 @@ Versioned APKs + changelog: **[eurobuddha/minima-core-apks](https://github.com/e
 
 ## Project layout
 
-- `app/src/main/java/org/minimarex/vestr/` — `MainActivity` (3‑tab shell + pairing + script deploy),
+- `app/src/main/java/com/eurobuddha/vestr/` — `MainActivity` (3‑tab shell + pairing + script deploy),
   `Creator`/`Collector`/`About` views, `CreateContractActivity`, `ContractDetailActivity` (collect),
   `CalculatorActivity`, `VestingContract` (script + math), `Contract` (state parser), `NodeApi` (IPC),
   `VestrDesign` (tokens).

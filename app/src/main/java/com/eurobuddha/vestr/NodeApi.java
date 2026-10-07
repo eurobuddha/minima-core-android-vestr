@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Looper;
 
 import org.json.JSONObject;
-import org.minimarex.minimaapi.MinimaAPI;
-import org.minimarex.minimaapi.MinimaAPIListener;
+import com.eurobuddha.minimaapi.MinimaAPI;
+import com.eurobuddha.minimaapi.MinimaAPIListener;
 
 /**
  * Thin wrapper around the Minima Core native IPC SDK.
@@ -106,6 +106,10 @@ public class NodeApi {
                     if (!zResponse.optBoolean("enabled", true)) {
                         if (mPairing != null) mPairing.onEnabled(false);
                         if (cb != null) cb.onError(ERR_NOT_ENABLED);
+                        return;
+                    }
+                    if (!(zResponse.opt("status") instanceof Boolean)) {
+                        if (cb != null) cb.onError(zResponse.optString("transporterror", "Node result unavailable. Outcome unknown."));
                         return;
                     }
                     if (cb != null) cb.onResult(zResponse);

@@ -241,7 +241,7 @@ public class ContractDetailActivity extends SubActivity {
         node.cmd(cmds.get(i), new NodeApi.Cb() {
             @Override public void onResult(JSONObject j) {
                 // every build step returns status:true; txnpost returns the posted txpow
-                if (!j.optBoolean("status", true)) { fail(j.optString("error", "Collect failed"), id); return; }
+                if (!j.optBoolean("status", false)) { fail(j.optString("error", "Collect failed"), id); return; }
                 runSequence(cmds, i + 1, id);
             }
             @Override public void onError(String m) {
