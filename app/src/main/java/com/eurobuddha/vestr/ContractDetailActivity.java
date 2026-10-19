@@ -35,6 +35,10 @@ public class ContractDetailActivity extends SubActivity {
         title("Contract");
         try { c = Contract.from(new JSONObject(getIntent().getStringExtra("coin"))); }
         catch (Exception e) { finish(); return; }
+        if (!c.safeForCommands()) {
+            Toast.makeText(this, "This contract contains invalid data. Nothing was sent to the node.", Toast.LENGTH_LONG).show();
+            finish(); return;
+        }
         render();
         fetchBlock();
     }
@@ -194,7 +198,7 @@ public class ContractDetailActivity extends SubActivity {
 
     /** Assemble the collect transaction command-by-command and run it as a strict sequence. */
     private void collect(BigDecimal canCollect) {
-        if (canCollect.signum() <= 0) return;
+        if (!c.safeForCommands() || canCollect.signum() <= 0) return;
         String burn = burnInput.getText().toString().trim();
         BigDecimal change = this.change;   // exact runscript value (@AMOUNT - cancollect), NOT recomputed here
         String id = "vc" + System.currentTimeMillis();

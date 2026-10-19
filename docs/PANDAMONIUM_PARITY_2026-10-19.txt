@@ -1,0 +1,17 @@
+Standalone parity checkpoint: Vestr 0.4.7 / code407
+
+Reused Pandamonium adapt-pandamonium-review-vestr.py and ContractSafetyTest from
+26967b2 (1.9.100), with standalone text for the invalid-contract toast. The command
+boundary comes from PandaDEX CommandSafety. Contract fields are validated before
+rendering, VM queries and collection; malformed entries are filtered from the list.
+The covenant and amount calculation are preserved. Existing IPC retained.
+
+Review: adapter, contract parser, detail/collection callers, NodeApi and regression
+fixtures inspected. No unresolved issue in this validation port. Full application
+review and other parity changes are separate work, still in progress.
+4 mocked/unit tests passed, release lint 0 errors / 54 warnings, offline signed
+release build passed. Package com.eurobuddha.vestr version0.4.7/code407 verified.
+Certificate SHA-256:
+eca1383c9d27683a281fbe6355356267877dc2dd14d963d7cc289ca0700e517f
+Candidate dist/vestr-0.4.7-candidate.apk; checksum beside it. No live transactions,
+device installation or publication. Final release rollout held for Fold validation.
