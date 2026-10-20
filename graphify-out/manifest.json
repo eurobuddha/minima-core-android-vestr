@@ -1,8 +1,8 @@
 {
   "app/build.gradle": {
-    "mtime": 1783341730.3558607,
-    "ast_hash": "f4ba455e6c359dae4884180647ce41b7",
-    "semantic_hash": "f4ba455e6c359dae4884180647ce41b7"
+    "mtime": 1788464012.9763863,
+    "ast_hash": "b91176d98aa7c5652ec7d5cd727abb17",
+    "semantic_hash": ""
   },
   "app/src/main/java/com/eurobuddha/vestr/AboutView.java": {
     "mtime": 1783341716.2088997,
@@ -123,5 +123,50 @@
     "mtime": 1783341716.2334957,
     "ast_hash": "54e65ec8f96b99476a0863a33ba5cfd3",
     "semantic_hash": "54e65ec8f96b99476a0863a33ba5cfd3"
+  },
+  "CLAUDE.md": {
+    "mtime": 1786883622.967101,
+    "ast_hash": "46e9035553a7ba076e59754595bc542a",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1782394191.702664,
+    "ast_hash": "2cce6b184657c1f0e3c3b7845441d606",
+    "semantic_hash": ""
+  },
+  "app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png": {
+    "mtime": 1782420421.0646105,
+    "ast_hash": "6282b92ffccd0f13270f161e529a43c0",
+    "semantic_hash": ""
+  },
+  "app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png": {
+    "mtime": 1782420421.0480478,
+    "ast_hash": "693d1806082c34efec1d2091caa2475f",
+    "semantic_hash": ""
+  },
+  "app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png": {
+    "mtime": 1782420421.080683,
+    "ast_hash": "aaafd9a9223ff2d6ebc6bd6226f3e5a3",
+    "semantic_hash": ""
+  },
+  "app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1782420421.0957441,
+    "ast_hash": "01c797eaa0491491919e61d716a3bccd",
+    "semantic_hash": ""
+  },
+  "app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1782420421.1135547,
+    "ast_hash": "f674b36578111e9c401bc37842aa2666",
+    "semantic_hash": ""
+  },
+  ".githooks/install.sh": {
+    "mtime": 1786883622.945482,
+    "ast_hash": "f31b37c6d1b5d340a5623f1715457ea0",
+    "semantic_hash": ""
+  },
+  ".githooks/pre-commit": {
+    "mtime": 1786883622.9414997,
+    "ast_hash": "03526be838d5dd774506cc1f8b47f38c",
+    "semantic_hash": ""
   }
 }

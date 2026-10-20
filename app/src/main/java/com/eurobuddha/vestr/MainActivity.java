@@ -64,12 +64,14 @@ public class MainActivity extends AppCompatActivity {
         final View headerV = findViewById(R.id.header);
         final View navV = findViewById(R.id.bottomBar);
         final int headerTop = headerV.getPaddingTop();
+        final int headerLeft = headerV.getPaddingLeft();
+        final int headerRight = headerV.getPaddingRight();
         final int navBottom = navV.getPaddingBottom();
         final int navLeft = navV.getPaddingLeft();
         final int navRight = navV.getPaddingRight();
         androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
             androidx.core.graphics.Insets b = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
-            headerV.setPadding(headerV.getPaddingLeft(), headerTop + b.top, headerV.getPaddingRight(), headerV.getPaddingBottom());
+            headerV.setPadding(headerLeft + b.left, headerTop + b.top, headerRight + b.right, headerV.getPaddingBottom());
             navV.setPadding(navLeft + b.left, navV.getPaddingTop(), navRight + b.right, navBottom + b.bottom);
             return insets;
         });
@@ -241,6 +243,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return out;
     }
+
+    /** Coins at the script address that {@link Contract#safeForCommands()} refused — hidden from the lists but counted. */
+    public int unsafeContractCount() { return contractCoins.size() - contracts().size(); }
 
     private int dp(int v) { return (int) (v * getResources().getDisplayMetrics().density); }
 }

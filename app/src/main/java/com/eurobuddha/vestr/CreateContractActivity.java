@@ -168,6 +168,9 @@ public class CreateContractActivity extends SubActivity {
         if (startMs <= System.currentTimeMillis()) { setStatus(status, "Start must be in the future.", false); return; }
         if (endMs <= startMs) { setStatus(status, "End must be after the start.", false); return; }
         if (tip == 0) { setStatus(status, "Still syncing the chain tip — try again in a moment.", false); return; }
+        // password: is interpolated unquoted into the send command — whitespace would split the parameter
+        // list and ';' / '"' would trip CommandSafety with a message that doesn't name this field.
+        if (!pw.isEmpty() && !pw.matches("[^\\s;\"]+")) { setStatus(status, "Vault password can't contain spaces, quotes or ';'.", false); return; }
 
         // Resolve to the 0x hex form — the contract compares GETOUTADDR (always 0x) against state[0],
         // so a user-entered Mx... address must be normalised here or the on-chain check would never match.
@@ -216,7 +219,7 @@ public class CreateContractActivity extends SubActivity {
                 .append(" tokenid:").append(tokenid)
                 .append(" state:").append(state);
         if (!pw.isEmpty()) cmd.append(" password:").append(pw);
-        if (!burn.isEmpty() && isPositive(burn)) cmd.append(" burn:").append(burn);
+        if (!burn.isEmpty() && isPositive(burn)) cmd.append(" burn:").append(new BigDecimal(burn).toPlainString());
 
         createBtn.setEnabled(false);
         setStatus(status, "Creating contract…", true);

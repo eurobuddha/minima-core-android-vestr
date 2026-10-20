@@ -60,6 +60,7 @@ public class CreatorView extends BaseView {
             // Reuse the shared card renderer so Creator and Collector show identical contract rows.
             for (Contract c : contracts) container.addView(ContractUi.card(act, c));
         }
+        if (act.unsafeContractCount() > 0) container.addView(ContractUi.hiddenRow(act, act.unsafeContractCount()));
     }
 
     /** Build a rounded full-width action button (TextView, not Button, for the flat look); {@code primary} = yellow accent. */

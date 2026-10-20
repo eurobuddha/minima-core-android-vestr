@@ -14,6 +14,16 @@ public class ContractSafetyTest {
         assertTrue(Contract.from(coin()).safeForCommands());
         assertNull(CommandSafety.failure("newscript script:\""+VestingContract.CLEAN_SCRIPT+"\""));
         assertNull(CommandSafety.failure("runscript script:\""+VestingContract.CHECK_MATHS+"\""));
+        // representative ASSEMBLED command with JSON params, exactly as ContractDetailActivity.runMaths builds it
+        assertNull(CommandSafety.failure("runscript script:\""+VestingContract.CHECK_MATHS
+                +"\" prevstate:{\"1\":\"1\",\"2\":\"1\",\"3\":\"1\",\"4\":\"1\",\"5\":\"1\"} globals:{\"@AMOUNT\":\"1\",\"@BLOCK\":\"1\",\"@COINAGE\":\"1\"}"));
+    }
+    @Test public void malformedCoinFieldsAreRefused() throws Exception {
+        assertFalse("coinid", Contract.from(coin().put("coinid","0x12")).safeForCommands());
+        assertFalse("tokenid", Contract.from(coin().put("tokenid","0x1234")).safeForCommands());
+        assertFalse("amount", Contract.from(coin().put("amount","0")).safeForCommands());
+        JSONObject zeroTotal = coin(); zeroTotal.getJSONArray("state").getJSONObject(1).put("data","0");
+        assertFalse("total", Contract.from(zeroTotal).safeForCommands());
     }
     @Test public void stateCannotInjectCommandsParametersOrJson() throws Exception {
         for (int row=0;row<10;row++) for(String bad:new String[]{"1;quit", "1 amount:99", "1\"}", "1e999999", "1\n"}) {

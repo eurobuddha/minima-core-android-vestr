@@ -1,5 +1,8 @@
 package com.eurobuddha.vestr;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
@@ -7,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -57,12 +61,17 @@ public final class ContractUi {
         LinearLayout titleCol = new LinearLayout(act);
         titleCol.setOrientation(LinearLayout.VERTICAL);
         titleCol.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-        // No user nickname in the model — label by the truncated coin UID instead.
+        // No user nickname in the model — label by the FULL contract uid (never truncated); tap copies it.
         TextView nick = new TextView(act);
-        nick.setText("Contract " + shortHex(c.uid));
+        nick.setText("Contract " + c.uid);
         nick.setTextColor(VestrDesign.DIM);
         nick.setTextSize(12f);
-        nick.setSingleLine(true);
+        nick.setSingleLine(false);
+        nick.setOnClickListener(v -> {   // consumes the click so the card's detail listener doesn't fire
+            ((ClipboardManager) act.getSystemService(Context.CLIPBOARD_SERVICE))
+                    .setPrimaryClip(ClipData.newPlainText("Contract id", c.uid));
+            Toast.makeText(act, "Copied", Toast.LENGTH_SHORT).show();
+        });
         titleCol.addView(nick);
         TextView amt = new TextView(act);
         amt.setText(amount(c.amount) + " " + c.tokenName);
@@ -143,11 +152,15 @@ public final class ContractUi {
         } catch (Exception e) { return b.toPlainString(); }
     }
 
-    /** Abbreviate a long hex id to "0x"-stripped "abcdef…wxyz"; short strings pass through unchanged. */
-    static String shortHex(String s) {
-        if (s == null) return "";
-        s = s.startsWith("0x") ? s.substring(2) : s;
-        return s.length() <= 10 ? s : s.substring(0, 6) + "…" + s.substring(s.length() - 4);
+    /** Non-tappable dim row telling the user that {@code n} coins at the script address were refused by the safety gate. */
+    public static View hiddenRow(MainActivity act, int n) {
+        TextView t = new TextView(act);
+        t.setText(n + (n == 1 ? " contract hidden" : " contracts hidden") + " — on-chain state is unreadable by this app.");
+        t.setTextColor(VestrDesign.DIM_2);
+        t.setTextSize(12f);
+        t.setGravity(Gravity.CENTER);
+        t.setPadding(0, dp(act, 8), 0, dp(act, 8));
+        return t;
     }
 
     /** "starts in 3 days" / "started 2 days ago" / "ends in …". */

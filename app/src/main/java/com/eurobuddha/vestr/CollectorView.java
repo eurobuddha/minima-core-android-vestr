@@ -55,5 +55,6 @@ public class CollectorView extends BaseView {
             // Same shared card as the Creator tab; tapping a card opens the detail/collect screen.
             for (Contract c : contracts) container.addView(ContractUi.card(act, c));
         }
+        if (act.unsafeContractCount() > 0) container.addView(ContractUi.hiddenRow(act, act.unsafeContractCount()));
     }
 }

@@ -80,7 +80,11 @@ public class NodeApi {
     public void cmd(String command, Cb cb) {
         if (mReleased) return;
         String unsafe = CommandSafety.failure(command);
-        if (unsafe != null) { if (cb != null) cb.onError(unsafe); return; }
+        if (unsafe != null) {
+            // Deliver on the main looper like every other outcome, not synchronously on the caller's thread.
+            mMain.post(() -> { if (!dead() && cb != null) cb.onError(unsafe); });
+            return;
+        }
         final boolean[] done = {false};
         final Runnable[] ref = new Runnable[1];
         final Runnable timeout = () -> {

@@ -198,6 +198,7 @@ public class ContractDetailActivity extends SubActivity {
 
     /** Assemble the collect transaction command-by-command and run it as a strict sequence. */
     private void collect(BigDecimal canCollect) {
+        // belt-and-braces: init() already refused an unsafe contract
         if (!c.safeForCommands() || canCollect.signum() <= 0) return;
         String burn = burnInput.getText().toString().trim();
         BigDecimal change = this.change;   // exact runscript value (@AMOUNT - cancollect), NOT recomputed here
@@ -224,7 +225,7 @@ public class ContractDetailActivity extends SubActivity {
             cmds.add("txnstate id:" + id + " port:" + port + " value:" + Contract.state(c.raw, port));
         }
         String post = "txnpost id:" + id;
-        if (!burn.isEmpty() && isPositive(burn)) post += " burn:" + burn;
+        if (!burn.isEmpty() && isPositive(burn)) post += " burn:" + new BigDecimal(burn).toPlainString();
         cmds.add(post);
 
         collectBtn.setEnabled(false);
